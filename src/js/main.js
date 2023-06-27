@@ -1,7 +1,8 @@
 import "../scss/styles.scss";
-import "../assests/Logo-TV-Shows.png";
+import Logo from "../assests/Logo.png";
 
 const logo = document.querySelector(".logo");
-const logoImg = "../assests/Logo-TV-Shows.png";
+const logoImage = new Image();
+logoImage.src = Logo;
 
-logoImg.appenchild(logo);
+logo.appendChild(logoImage);
