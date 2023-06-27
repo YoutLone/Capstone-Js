@@ -8,53 +8,48 @@
   </head>
 
   <!-- HEADER -->
-  <header class="header container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container">
-        <a class="navbar-brand logo" href="#"> </a>
-        <span id="movie-counter" class="navbar-text">Actress(- -)</span>
+  <header class="container">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand logo" href="#"></a>
         <button
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse ps-5" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">People</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Networks</a>
-            </li>
-          </ul>
+        <div
+          class="collapse navbar-collapse justify-content-center"
+          id="navbarNavAltMarkup"
+        >
+          <div
+            class="navbar-nav icon-link icon-link-hover"
+            style="--bs-link-hover-color-rgb: 25, 135, 84"
+          >
+            <a class="nav-link active" aria-current="page" href="#">Home(6)</a>
+            <a class="nav-link" href="#">People</a>
+            <a class="nav-link" href="#">Networks</a>
+          </div>
         </div>
       </div>
     </nav>
   </header>
+
+
   <body>
     <main class="container">
-      <!-- START-LIST -->
-      <section class="List"></section>
-      <section class="Pagination"></section>
-      <!-- END-LIST -->
-
-      <!-- COMMENT: START -->
-      <section class="comment-popup">
-        <div class="popup-wrapper">
-          <i class="fas fa-times comment-cross"></i>
-          <div class="movie-description"></div>
+      <section>
+        <div class="container text-center mt-5">
+          <div class="row row-cols-3 col-sm" id="card"></div>
         </div>
       </section>
     </main>
+    <script src="https://kit.fontawesome.com/a3673060fd.js" crossorigin="anonymous"></script>
   </body>
   <!-- FOOTER -->
   <footer class="footer mt-auto py-3 bg-light">
