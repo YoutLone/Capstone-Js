@@ -1,4 +1,4 @@
-import { TvAPI } from './API.js';
+import { TvAPI } from '../API/API.js';
 import openPopup from './popup.js';
 
 const generateCardHtml = (data) => `
@@ -7,7 +7,7 @@ const generateCardHtml = (data) => `
       <p class="mt-2">${data.name}</p>
       <i class="fa-solid fa-heart"></i>
       <p> Likes</p>
-      <button class="btn btn-outline-primary btn-lg mt-2 mb-3 comment-button" data-tvapi="${TvAPI}${data.id}">Comment</button>
+      <button class="btn btn-outline-primary btn-lg mt-2 mb-3 comment-button" data-tvapi="${TvAPI}${data.id}"  type="button">Comment</button>
     </div>
   `;
 
