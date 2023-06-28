@@ -1,7 +1,7 @@
-import { TvAPI, baseUrl, appId } from '../API/API.js';
+import { TvAPI } from '../API/API.js';
 import openPopup from './popup.js';
 
-const generateCardHtml = data => `
+const generateCardHtml = (data) => `
     <div class="card col mt-3">
       <img src="${data.image.medium}" alt="#" class="mt-2"/>
       <p class="mt-2">${data.name}</p>
@@ -11,14 +11,9 @@ const generateCardHtml = data => `
     </div>
   `;
 
-const refreshPopup = () => {
-  // eslint-disable-next-line no-use-before-define
-  attachCommentButtonListeners();
-};
-
 const attachCommentButtonListeners = () => {
   const commentButtons = document.querySelectorAll('.comment-button');
-  commentButtons.forEach(button => {
+  commentButtons.forEach((button) => {
     button.addEventListener('click', async () => {
       const tvApi = button.getAttribute('data-tvapi');
       const response = await fetch(tvApi);
@@ -32,9 +27,3 @@ const attachCommentButtonListeners = () => {
 };
 
 export { generateCardHtml, attachCommentButtonListeners };
-
-export {
-  generateCardHtml,
-  attachCommentButtonListeners,
-  attachLikeButtonListeners,
-};

@@ -1,7 +1,6 @@
 import {
   generateCardHtml,
   attachCommentButtonListeners,
-  attachLikeButtonListeners,
 } from '../popup/comment.js';
 
 import { TvAPI } from '../API/API.js';
@@ -30,7 +29,6 @@ const ListApi = async () => {
     );
 
     attachCommentButtonListeners();
-    attachLikeButtonListeners(); // Attach event listeners after the buttons are added to the DOM
   } catch (err) {
     throw new Error(`${err}`);
   }
