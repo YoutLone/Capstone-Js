@@ -1,7 +1,7 @@
 import {
   generateCardHtml,
-  attachCommentButtonListeners,
-  attachLikeButtonListeners,
+  attachCommentButtonListener,
+  attachLikeButtonListeners
 } from '../popup/comment.js';
 
 import { TvAPI } from '../API/API.js';
