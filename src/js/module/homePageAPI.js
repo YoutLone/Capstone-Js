@@ -1,4 +1,4 @@
-import { generateCardHtml, attachCommentButtonListeners } from './comment.js';
+import { generateCardHtml, attachCommentButtonListeners, attachLikeButtonListeners } from './comment.js';
 import { TvAPI } from './API.js';
 
 const home = document.getElementById('card');
@@ -24,7 +24,8 @@ const ListApi = async () => {
       }),
     );
 
-    attachCommentButtonListeners(); // Attach event listeners after the buttons are added to the DOM
+    attachCommentButtonListeners();
+    attachLikeButtonListeners(); // Attach event listeners after the buttons are added to the DOM
   } catch (err) {
     throw new Error(`${err}`);
   }
