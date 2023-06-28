@@ -12,21 +12,21 @@ const id = 6; // Set the desired range of IDs, e.g., from 1 to 10
 
 const ListApi = async () => {
   const fetchPromises = Array.from({ length: id }, (_, i) => i + 1)
-    .map(i => `${TvAPI}${i}`)
-    .map(tvApi => fetch(tvApi));
+    .map((i) => `${TvAPI}${i}`)
+    .map((tvApi) => fetch(tvApi));
 
   try {
     const responses = await Promise.all(fetchPromises);
 
     await Promise.all(
-      responses.map(async response => {
+      responses.map(async (response) => {
         if (!response.ok) {
           throw new Error(`Request failed with status ${response.status}`);
         }
         const data = await response.json();
         const cardHtml = generateCardHtml(data);
         home.innerHTML += cardHtml;
-      })
+      }),
     );
 
     attachCommentButtonListeners();

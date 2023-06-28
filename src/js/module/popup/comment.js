@@ -1,7 +1,7 @@
 import { TvAPI, baseUrl, appId } from '../API/API.js';
 import openPopup from './popup.js';
 
-const generateCardHtml = data => `
+const generateCardHtml = (data) => `
   <div class="card col mt-3">
     <img src="${data.image.medium}" alt="#" class="mt-2"/>
     <p class="mt-2">${data.name}</p>
@@ -13,7 +13,7 @@ const generateCardHtml = data => `
 
 const attachCommentButtonListeners = () => {
   const commentButtons = document.querySelectorAll('.comment-button');
-  commentButtons.forEach(button => {
+  commentButtons.forEach((button) => {
     button.addEventListener('click', async () => {
       const tvApi = button.getAttribute('data-tvapi');
       const response = await fetch(tvApi);
@@ -33,10 +33,10 @@ const getReaction = async () => {
   return data;
 };
 
-const displayReaction = async likeCounts => {
+const displayReaction = async (likeCounts) => {
   const totalLikes = await getReaction();
-  totalLikes.forEach(totalLike => {
-    likeCounts.forEach(likeCount => {
+  totalLikes.forEach((totalLike) => {
+    likeCounts.forEach((likeCount) => {
       if (totalLike.item_id === likeCount.id) {
         likeCount.textContent = `${totalLike.likes} likes`;
       }
@@ -45,7 +45,7 @@ const displayReaction = async likeCounts => {
 };
 
 const sendReactionToApi = async (likeBtn, likeCounts) => {
-  likeBtn.addEventListener('click', async e => {
+  likeBtn.addEventListener('click', async (e) => {
     const reactions = { item_id: `${e.target.id}` };
     const url = `${baseUrl}${appId}/likes`;
     const requestOptions = {
@@ -64,7 +64,7 @@ const sendReactionToApi = async (likeBtn, likeCounts) => {
 const attachLikeButtonListeners = () => {
   const likeButtons = document.querySelectorAll('.like-button');
   const likeCounts = document.querySelectorAll('.like-count');
-  likeButtons.forEach(likeButton => sendReactionToApi(likeButton, likeCounts));
+  likeButtons.forEach((likeButton) => sendReactionToApi(likeButton, likeCounts));
   displayReaction(likeCounts);
 };
 
