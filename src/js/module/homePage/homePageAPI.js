@@ -1,8 +1,6 @@
-import {
-  generateCardHtml,
-  attachCommentButtonListeners,
-  attachLikeButtonListeners,
-} from '../popup/comment.js';
+import attachLikeButtonListeners from './likeBtn.js';
+import attachCommentButtonListeners from '../popup/commentBtn.js';
+import generateCardHtml from '../popup/comment.js';
 
 import { TvAPI } from '../API/API.js';
 
