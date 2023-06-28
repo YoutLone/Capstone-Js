@@ -1,4 +1,4 @@
-import { TvAPI, baseUrl, appId } from './API.js';
+import { TvAPI, baseUrl, appId } from '../API/API.js';
 import openPopup from './popup.js';
 
 const generateCardHtml = (data) => `

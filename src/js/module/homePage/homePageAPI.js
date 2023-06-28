@@ -1,5 +1,10 @@
-import { generateCardHtml, attachCommentButtonListeners, attachLikeButtonListeners } from './comment.js';
-import { TvAPI } from './API.js';
+import {
+  generateCardHtml,
+  attachCommentButtonListeners,
+  attachLikeButtonListeners,
+} from '../popup/comment.js';
+
+import { TvAPI } from '../API/API.js';
 
 const home = document.getElementById('card');
 
