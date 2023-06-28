@@ -1,12 +1,12 @@
-import { TvAPI, baseUrl } from './API.js';
+import { TvAPI, baseUrl, appId } from './API.js';
 import openPopup from './popup.js';
 
 const generateCardHtml = (data) => `
   <div class="card col mt-3">
     <img src="${data.image.medium}" alt="#" class="mt-2"/>
     <p class="mt-2">${data.name}</p>
-    <i class="fa-regular fa-heart like-button"></i>
-    <p class="like-count">0 Likes</p>
+    <i class="fa-regular fa-heart like-button" id="${data.id}"></i>
+    <p class="like-count" id="${data.id}">0 Likes</p>
     <button class="btn btn-outline-primary btn-lg mt-2 mb-3 comment-button" data-tvapi="${TvAPI}${data.id}">Comment</button>
   </div>
 `;
@@ -21,49 +21,53 @@ const attachCommentButtonListeners = () => {
         throw new Error(`Request failed with status ${response.status}`);
       }
       const data = await response.json();
-
       openPopup(data);
     });
   });
 };
 
-const attachLikeButtonListeners = () => {
-  const likeButtons = document.querySelectorAll('.like-button');
-  likeButtons.forEach((likeButton) => {
-    likeButton.addEventListener('click', async () => {
-      const parentCard = likeButton.parentNode;
-      const likeCount = parentCard.querySelector('.like-count');
-      const currentLikes = parseInt(likeCount.textContent.split(' ')[0]); // Get the current number of likes
-      const newLikes = currentLikes + 1; // Increment the like count by 1
+const getReaction = async () => {
+  const url = `${baseUrl}${appId}/likes`;
+  const result = await fetch(`${url}`);
+  const data = await result.json();
+  return data;
 
-      likeButton.classList.add('fas'); // Add the "fas" class to make the heart icon full
-      likeButton.classList.remove('far'); // Remove the "far" class to make the heart icon outlined
+}
 
-      likeCount.textContent = `${newLikes} Likes`; // Update the like count on the screen
-
-      const tvApi = likeButton.parentNode.querySelector('.comment-button').getAttribute('data-tvapi');
-      const itemId = tvApi.substring(TvAPI.length);
-
-      try {
-        const likeResponse = await fetch(`${baseUrl}likes`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            item_id: itemId,
-          }),
-        });
-        console.log(likeResponse);
-
-        if (!likeResponse.ok) {
-          throw new Error(`Like request failed with status ${likeResponse.status}`);
-        }
-      } catch (err) {
-        console.error(err);
+const displayReaction = async (likeCounts) => {
+  const totalLikes = await getReaction();
+  totalLikes.forEach((totalLike) => {
+    likeCounts.forEach((likeCount) => {
+      if (totalLike.item_id === likeCount.id) {
+        likeCount.textContent = `${totalLike.likes} likes`;
       }
     });
   });
+};
+
+
+const sendReactionToApi = async (likeBtn, likeCounts) => {
+  likeBtn.addEventListener('click', async (e) => {
+      const reactions = { item_id: `${e.target.id}` };
+      const url = `${baseUrl}${appId}/likes`;
+      const requestOptions = {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json; charset=UTF-8',
+        },
+        body: JSON.stringify(reactions),
+      };
+
+      await fetch(`${url}`, requestOptions);
+      displayReaction(likeCounts)
+  });
+};
+
+const attachLikeButtonListeners = () => {
+  const likeButtons = document.querySelectorAll('.like-button');
+  const likeCounts = document.querySelectorAll('.like-count');
+  likeButtons.forEach((likeButton) => sendReactionToApi(likeButton, likeCounts))
+  displayReaction(likeCounts);
 };
 
 export { generateCardHtml, attachCommentButtonListeners, attachLikeButtonListeners };
