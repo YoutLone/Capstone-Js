@@ -31,8 +31,7 @@ const getReaction = async () => {
   const result = await fetch(`${url}`);
   const data = await result.json();
   return data;
-
-}
+};
 
 const displayReaction = async (likeCounts) => {
   const totalLikes = await getReaction();
@@ -45,28 +44,27 @@ const displayReaction = async (likeCounts) => {
   });
 };
 
-
 const sendReactionToApi = async (likeBtn, likeCounts) => {
   likeBtn.addEventListener('click', async (e) => {
-      const reactions = { item_id: `${e.target.id}` };
-      const url = `${baseUrl}${appId}/likes`;
-      const requestOptions = {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json; charset=UTF-8',
-        },
-        body: JSON.stringify(reactions),
-      };
+    const reactions = { item_id: `${e.target.id}` };
+    const url = `${baseUrl}${appId}/likes`;
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json; charset=UTF-8',
+      },
+      body: JSON.stringify(reactions),
+    };
 
-      await fetch(`${url}`, requestOptions);
-      displayReaction(likeCounts)
+    await fetch(`${url}`, requestOptions);
+    displayReaction(likeCounts);
   });
 };
 
 const attachLikeButtonListeners = () => {
   const likeButtons = document.querySelectorAll('.like-button');
   const likeCounts = document.querySelectorAll('.like-count');
-  likeButtons.forEach((likeButton) => sendReactionToApi(likeButton, likeCounts))
+  likeButtons.forEach((likeButton) => sendReactionToApi(likeButton, likeCounts));
   displayReaction(likeCounts);
 };
 

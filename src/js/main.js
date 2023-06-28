@@ -11,4 +11,3 @@ logo.appendChild(logoImage);
 
 ListApi();
 openPopup();
-
