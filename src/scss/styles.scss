@@ -1,4 +1,4 @@
-@import "bootstrap/scss/bootstrap";
+@import 'bootstrap/scss/bootstrap';
 
 * {
   margin: 0;
@@ -8,7 +8,7 @@
 
 .popup {
   position: fixed;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
@@ -16,4 +16,5 @@
   border: 1px solid #ccc;
   z-index: 9999;
   display: none;
+  height: 70vh;
 }
