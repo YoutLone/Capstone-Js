@@ -32,6 +32,11 @@ const sendReactionToApi = async (likeBtn, likeCounts) => {
 
     await fetch(`${url}`, requestOptions);
     displayReaction(likeCounts);
+
+    // Change heart icon to full icon with color
+    likeBtn.classList.toggle('far');
+    likeBtn.classList.toggle('fas');
+    likeBtn.style.color = likeBtn.classList.contains('fas') ? 'purple' : '';
   });
 };
 

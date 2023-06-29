@@ -1,6 +1,7 @@
 import attachLikeButtonListeners from './likeBtn.js';
 import attachCommentButtonListeners from '../popup/commentBtn.js';
 import generateCardHtml from '../popup/comment.js';
+import itemCounter from './itemCounter.js';
 
 import { TvAPI } from '../API/API.js';
 
@@ -27,6 +28,7 @@ const ListApi = async () => {
       }),
     );
 
+    itemCounter(id); // Call itemCounter with the desired count
     attachCommentButtonListeners();
     attachLikeButtonListeners(); // Attach event listeners after the buttons are added to the DOM
   } catch (err) {

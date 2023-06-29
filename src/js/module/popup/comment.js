@@ -6,7 +6,7 @@ const generateCardHtml = (data) => `
     <p class="mt-2">${data.name}</p>
     <i class="fa-regular fa-heart like-button" id="${data.id}"></i>
     <p class="like-count" id="${data.id}">0 Likes</p>
-    <button class="btn btn-outline-primary btn-lg mt-2 mb-3 comment-button" data-tvapi="${TvAPI}${data.id}">Comment</button>
+    <button class="btn btn-outline-secondary btn-lg mt-2 mb-3 comment-button" data-tvapi="${TvAPI}${data.id}">Comment</button>
   </div>
 `;
 
