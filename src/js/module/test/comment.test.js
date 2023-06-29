@@ -16,4 +16,6 @@ test('generateCommentHTML should generate correct comment HTML', () => {
   const generatedHTML = generateCommentHTML(comment);
 
   expect(generatedHTML).toBe(expectedHTML);
+
 });
+
