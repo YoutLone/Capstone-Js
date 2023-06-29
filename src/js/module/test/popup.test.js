@@ -24,5 +24,4 @@ test('generatePopupContent should generate correct popup content', () => {
   const generatedHTML = generatePopupContent(data, comments);
 
   expect(generatedHTML).toMatchSnapshot();
-
 });
