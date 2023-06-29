@@ -11,3 +11,5 @@ const generateCardHtml = (data) => `
 `;
 
 export default generateCardHtml;
+
+
