@@ -24,12 +24,18 @@ body {
   font-size: 14px;
   color: black;
   position: relative;
+  font-family: 'Poppins', sans-serif;
 }
 
 .logo {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: transform 0.3s;
+}
+
+.logo:hover {
+  transform: scale(1.1);
 }
 
 .navbar {
@@ -67,6 +73,8 @@ main.container {
   padding: 10px 20px;
   text-decoration: none;
   transition: color 0.3s;
+  transition: transform 0.3s;
+  margin: 30px;
 }
 
 /* Apply hover effect to the navigation links */
@@ -74,6 +82,7 @@ main.container {
   color: darkgoldenrod;
   background-color: rgba(153, 151, 42, 0.2);
   border-radius: 5px;
+  transform: scale(1.1);
 }
 
 #card {
@@ -83,6 +92,7 @@ main.container {
 }
 
 .card {
+  background-color: rgb(195, 204, 160);
   width: auto;
   height: auto;
   font-size: 18px;
@@ -92,6 +102,18 @@ main.container {
 
 .like-button:hover {
   cursor: pointer;
+  transform: scale(1.5);
+}
+
+.comment-button {
+  background-color: rgb(146, 165, 78);
+  font-weight: bold;
+  color: black;
+  font-family: 'Poppins', sans-serif;
+}
+
+.comment-button:hover {
+  background-color: rgb(114, 126, 6);
 }
 
 /* Style the footer */
