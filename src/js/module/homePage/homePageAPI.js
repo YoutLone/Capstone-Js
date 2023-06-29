@@ -5,6 +5,7 @@ import {
 } from '../popup/comment.js';
 
 import { TvAPI } from '../API/API.js';
+import itemCounter from './itemCounter.js';
 
 const home = document.getElementById('card');
 
@@ -17,6 +18,7 @@ const ListApi = async () => {
 
   try {
     const responses = await Promise.all(fetchPromises);
+    await itemCounter(id);
 
     await Promise.all(
       responses.map(async (response) => {
@@ -24,6 +26,7 @@ const ListApi = async () => {
           throw new Error(`Request failed with status ${response.status}`);
         }
         const data = await response.json();
+
         const cardHtml = generateCardHtml(data);
         home.innerHTML += cardHtml;
       }),
