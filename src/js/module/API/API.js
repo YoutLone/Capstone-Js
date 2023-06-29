@@ -1,6 +1,6 @@
 const baseUrl =
   'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
 const TvAPI = 'https://api.tvmaze.com/people/';
-const appId = 'Ky7W0EmbNf2CFFNG3oD1';
+const appId = 'yyfLf6cvRPHCKsoKgEIq';
 
 export { TvAPI, baseUrl, appId };
