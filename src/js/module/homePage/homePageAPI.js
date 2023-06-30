@@ -1,6 +1,6 @@
 import attachLikeButtonListeners from './likeBtn.js';
-import attachCommentButtonListeners from '../popup/commentBtn.js';
 import generateCardHtml from '../popup/comment.js';
+import attachCommentButtonListeners from '../popup/commentBtn.js';
 import itemCounter from './itemCounter.js';
 
 import { TvAPI } from '../API/API.js';
