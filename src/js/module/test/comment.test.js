@@ -7,7 +7,7 @@ test('generateCommentHTML should generate correct comment HTML', () => {
     comment: 'This is a test comment.',
   };
 
-  const expectedHTML = `<p>${comment.creation_date} ${comment.username}: ${comment.comment}</p>`;
+  const expectedHTML = `<p class="mt-2 comment-p">${comment.creation_date} ${comment.username}: ${comment.comment}</p>`;
 
   const generatedHTML = generateCommentHTML(comment);
 
