@@ -7,13 +7,9 @@ test('generateCommentHTML should generate correct comment HTML', () => {
     comment: 'This is a test comment.',
   };
 
-  const expectedHTML = `
-  <div class="comment container">
-    <p>${comment.creation_date} ${comment.username}: ${comment.comment}</p>
-  </div>
-`;
+  const expectedHTML = `<p>${comment.creation_date} ${comment.username}: ${comment.comment}</p>`;
 
   const generatedHTML = generateCommentHTML(comment);
 
-  expect(generatedHTML).toBe(expectedHTML);
+  expect(generatedHTML.trim()).toBe(expectedHTML.trim());
 });

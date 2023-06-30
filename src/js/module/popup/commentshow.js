@@ -1,7 +1,5 @@
 const generateCommentHTML = (comment) => `
-  <div class="comment container">
-    <p>${comment.creation_date} ${comment.username}: ${comment.comment}</p>
-  </div>
+    <p class="mt-2 comment-p">${comment.creation_date} ${comment.username}: ${comment.comment}</p>
 `;
 
 export default generateCommentHTML;
